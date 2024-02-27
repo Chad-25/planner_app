@@ -1,0 +1,21 @@
+<section class="section-categoriesLists">
+  <h2 class="categoriesLists-title">
+    <% if @categories.empty? %>
+      No categories yet.
+    <% else %>
+      Categories
+    <% end %>
+  </h2>
+
+  <div class="categoriesLists-titles-lists-container">
+    <% @categories.each do |category| %>
+      <%= link_to category_path(category), class: "categoriesLists-titles-lists" do %>
+        <%= category.title %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= link_to 'Add Category +', new_category_path, class:"category-add-button"  %>
+
+
+</section>

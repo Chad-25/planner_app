@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Planner App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "navigation" %>
+    <%= stylesheet_link_tag "body" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="body">
+
+  <nav>
+    <ul>
+      <div>
+        <%= link_to(root_path, class: "logo-link") do %>
+          <%= image_tag('planner_logo.png', alt: 'Logo', class: "logo-image") %>
+        <% end %>
+
+        <li class="align-right">
+          <% if user_signed_in? %>
+            <%= form_tag destroy_user_session_path, method: :delete, class: "logout-form" do %>
+              <%= submit_tag 'LOGOUT', class: "invisible-button nav-link" %>
+            <% end %>
+          <% end %>
+        </li>
+
+        <li class="align-right <%= 'selected' if current_page?(profile_path) %>"><%= link_to 'PROFILE', profile_path %></li>
+        <li class="align-right <%= 'selected' if current_page?(search_path) %>"><%= link_to 'SEARCH', search_path %></li>
+        <li class="align-right <%= 'selected' if current_page?(categories_path) %>"><%= link_to 'CATEGORIES', categories_path %></li>
+        <li class="align-right <%= 'selected' if current_page?(root_path) %>"><%= link_to 'HOME', root_path %></li>
+      </div>
+    </ul>
+  </nav>
+
+  <div class="notice-alert-container">
+    <div class="notice"><%= notice %></div>
+    <div class="alert"><%= alert %></div>
+  </div>
+
+  <%= yield %>
+
+  </body>
+</html>

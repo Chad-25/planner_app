@@ -1,0 +1,26 @@
+<section class="section-today">
+  <h2 class="today-title">
+    <% if @tasks_by_category.empty? %>
+      Hooray, no task for today! <br>
+      <%= link_to 'Create Task Now', new_category_path, class:"category-add-button today-add-button"  %>
+    <% else %>
+      Today's Tasks
+    <% end %>
+  </h2>
+  <% counter = 0 %>
+  <% @tasks_by_category.each do |category, tasks| %>
+    <button class="today-category  <%= counter.even? ? 'even' : 'odd' %>""><%= category.title %></button>
+    <% tasks.each do |task| %>
+      <label class="today-task">
+        <div class="today-task-div">
+            <%= form_with model: [category, task], url: update_status_task_path(task), local: true, data: { remote: true } do |form| %>
+              <%= form.check_box :status_complete, checked: task.status_complete, onchange: "this.form.submit();" %>
+                <%= form.submit "Update Task Status", style: "display: none;" %>
+            <% end %>
+            <span class="task-name"> <%= task.name %> </span>
+          </div>
+      </label>
+    <% end %>
+    <% counter += 1 %>
+  <% end %>
+</section>

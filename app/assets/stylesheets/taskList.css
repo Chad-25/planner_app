@@ -1,0 +1,73 @@
+    .task-list {
+        margin: 20px;
+    }
+
+    .task-title {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 18px;
+        background-color: #bdf5f9;
+        border-radius: 2px;
+        color: #00000098;
+        padding: 10px;
+        border: none;
+    }
+
+    .task-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .task-status-checkbox {
+        margin-right: 8px;
+    }
+
+    .task-name-link {
+        flex-grow: 1;
+        margin-right: 8px;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .due-date-text {
+        margin-right: 8px;
+        font-size: 12px;
+        color: #333;
+        font-style: italic;
+    }
+
+    .task-delete-button {
+        color: #00000098;
+        font-weight: bold;
+        font-size: 14px;
+        border: none;
+        background-color: #e94236;
+        padding: 5px 10px;
+        border-radius: 1px;
+        cursor: pointer;
+    }
+
+    .no-tasks-label {
+        color: #999;
+        font-style: italic;
+        margin-top: 10px;
+    }
+
+    .add-task-button {
+        margin-top: 10px;
+        font-weight: bold;
+        font-size: 14px;
+        color: #00000098;
+        background-color: #0dfffa;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 1px;
+    }
+
+    .add-task-button a {
+        text-decoration: none;
+        color: inherit;
+    }

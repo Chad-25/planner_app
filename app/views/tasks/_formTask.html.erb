@@ -1,0 +1,17 @@
+<section class="section-task-form">
+  <%= form_with model: [@category, @task] do |form| %>
+    <div class="task-column">
+      <div>
+        <label for="task_name" class="task-name">Task: </label>
+        <%= form.text_field :name, class: "task-name-input" %>
+      </div>
+      <div>
+        <label for="due_date" class="due-date">Due Date: </label>
+        <%= form.date_field :due_date, class: "due-date-input" %>
+      </div>
+    </div>
+    <div>
+      <%= form.submit "Submit", class: "task-submit-button" %>
+    </div>
+  <% end %>
+</section>

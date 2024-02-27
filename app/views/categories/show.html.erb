@@ -1,0 +1,7 @@
+<%= stylesheet_link_tag "categoryDetails" %>
+<div class="container-category-details">
+  <h2 class="category-details-title"><%= @category.title %> </h2>
+  <%= render 'showForm' %>
+<div>
+
+<%= render partial: 'tasks/taskList', locals: { tasks: @category.tasks } %>

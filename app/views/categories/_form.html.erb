@@ -1,0 +1,17 @@
+<section class="section-form-category">
+  <div class="form-column">
+    <%= form_with model: [@user, @category] do |form| %>
+      <div>
+        <label for="category_title" class="category_title">Title: </label>
+        <%= form.text_field :title, class: "form-category-input" %>
+      </div>
+      <div>
+        <label for="category_description" class="category_description">Description: </label>
+        <%= form.text_area :description, class: "form-category-input-description" %>
+      </div>
+      <div>
+        <%= form.submit "Submit", class: "form-category-submit" %>
+      </div>
+    <% end %>
+  </div>
+</section>
