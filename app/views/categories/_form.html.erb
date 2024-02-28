@@ -9,8 +9,9 @@
         <label for="category_description" class="category_description">Description: </label>
         <%= form.text_area :description, class: "form-category-input-description" %>
       </div>
-      <div>
+      <div class="form-buttons-category">
         <%= form.submit "Submit", class: "form-category-submit" %>
+        <%= link_to "Back", :back, class: "form-category-back" %>
       </div>
     <% end %>
   </div>

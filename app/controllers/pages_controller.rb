@@ -6,10 +6,4 @@ class PagesController < ApplicationController
     .includes(:category)
     .group_by(&:category)
   end
-
-  def search
-  end
-
-  def profile
-  end
 end

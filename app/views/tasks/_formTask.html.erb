@@ -10,8 +10,10 @@
         <%= form.date_field :due_date, class: "due-date-input" %>
       </div>
     </div>
-    <div>
+    <div class="form-buttons-tasks">
       <%= form.submit "Submit", class: "task-submit-button" %>
+      <%= link_to "Back", :back, class: "task-submit-back" %>
     </div>
+
   <% end %>
 </section>

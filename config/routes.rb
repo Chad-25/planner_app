@@ -15,8 +15,6 @@ Rails.application.routes.draw do
     resources :tasks
   end
 
-  get 'tasks/today', to: 'tasks#today', as: 'tasks_today'
-
   resources :tasks do
     member do
       patch 'update_status'

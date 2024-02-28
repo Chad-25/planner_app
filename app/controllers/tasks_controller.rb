@@ -59,7 +59,7 @@ class TasksController < ApplicationController
     @category = current_user.categories.find(params[:category_id])
     @task = @category.tasks.find(params[:id])
     @task.destroy
-    redirect_to category_path(@category), notice: "Task was successfully deleted."
+    redirect_back(fallback_location: root_path, notice: "Task was successfully deleted.")
   end
 
   def today

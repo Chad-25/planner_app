@@ -3,14 +3,17 @@
 <div class="task-list">
   <% if tasks.present? %>
     <h2 class="task-title">Tasks</h2>
-    <% tasks.each do |task| %>
+    <% tasks.order(status_complete: :asc).each do |task| %>
       <div class="task-item">
         <%= form_with model: [@category, task], url: update_status_task_path(task), local: true, data: { remote: true }, class: "task-form" do |form| %>
           <%= form.check_box :status_complete, checked: task.status_complete, onchange: "this.form.submit();", class: "task-status-checkbox" %>
         <% end %>
-        <%= link_to task.name, edit_category_task_path(@category, task), class: "task-name-link" %>
+        <%= link_to task.name, edit_category_task_path(@category, task), class: "task-name-link",
+            style: "#{task.status_complete ? 'text-decoration: line-through; text-decoration-thickness: 2px;' : ''}" %>
         <span class="due-date-text"> | <%= format_due_date(task.due_date) %> | </span>
-        <%= button_to "Remove", category_task_path(@category, task), method: :delete, data: { confirm: 'Are you sure you want to delete this task?' }, class: "task-delete-button" %>
+        <%= button_to "Remove", category_task_path(@category, task), method: :delete,
+            data: { confirm: 'Are you sure you want to delete this task?' },
+            class: "task-delete-button" %>
       </div>
     <% end %>
   <% else %>
