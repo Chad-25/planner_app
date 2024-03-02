@@ -1,0 +1,79 @@
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 20px;
+}
+
+.calendar {
+    width: 80%;
+    border-collapse: collapse;
+    justify-content: center;
+}
+
+.calendar thead th {
+    background-color: #f0f0f0;
+    color: #333;
+    text-align: center;
+    padding: 10px;
+}
+
+.calendar-title {
+    border-bottom: 1px solid #ccc;
+    font-size: 24px;
+}
+
+.calendar-cell {
+    position: relative;
+    width: 100px;
+    background-color: #fddae2;
+    border: 1px solid #ccc;
+}
+
+.today {
+    background-color: #e94236;
+}
+
+.calendar-date {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    height: 150px;
+    overflow: hidden;
+    margin-left: 5px;
+}
+
+.calendar-date h3 {
+    vertical-align: top;
+}
+
+
+.tasks-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    display: inline-block;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.task {
+    margin-bottom: 2px;
+    padding: 2px 5px;
+    font-size: 10px;
+    background-color: #f0f0f0;
+}
+
+.bullet-calendar-task {
+    color: #e94236;
+    text-decoration: none;
+}
+
+.task:hover {
+    background-color: #f0f0f0;
+}

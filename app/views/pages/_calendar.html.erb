@@ -1,0 +1,55 @@
+<% if @tasks.present? %>
+  <div class="calendar-container">
+    <table class="calendar">
+      <thead>
+        <tr>
+          <th colspan="7" class="calendar-title">
+            <%= @start_date.strftime("%B %Y") %>
+          </th>
+        </tr>
+        <tr>
+          <% weekdays = %w(Sun Mon Tue Wed Thu Fri Sat) %>
+          <% weekdays.each do |weekday| %>
+            <th class="calendar-day"><%= weekday %></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% current_date = @start_date.beginning_of_month %>
+        <% starting_day_of_week = current_date.strftime("%a") %>
+        <% index = weekdays.index(starting_day_of_week) %>
+        <% current_date -= index.days %>
+        <% while current_date <= @end_date.end_of_month %>
+          <tr>
+            <% 7.times do %>
+              <% if current_date < @start_date.beginning_of_month || current_date > @end_date.end_of_month %>
+                <td class="calendar-cell"></td>
+              <% else %>
+                <% if current_date == Date.today %>
+                  <td class="calendar-cell today">
+                <% else %>
+                  <td class="calendar-cell">
+                <% end %>
+                  <h3 class="calendar-date"><%= current_date.strftime("%d") %></h3>
+                  <% tasks_for_date = @tasks.where(due_date: current_date) %>
+                  <% if tasks_for_date.empty? %>
+                    <p></p>
+                  <% else %>
+                    <ul class="tasks-list">
+                      <% tasks_for_date.each do |task| %>
+                        <li class="task">
+                          <%= link_to "o " + task.name,  task.category, class: "bullet-calendar-task" %>
+                        </li>
+                      <% end %>
+                    </ul>
+                  <% end %>
+                </td>
+              <% end %>
+              <% current_date += 1.day %>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

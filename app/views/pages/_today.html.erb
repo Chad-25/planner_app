@@ -1,32 +1,34 @@
-<section class="section-today">
-  <h2 class="today-title">
-    <% if @tasks_by_category.empty? %>
-      Hooray, no task for today! <br>
-      <%= link_to 'Create Task Now', new_category_path, class: "category-add-button today-add-button" %>
-    <% else %>
-      Today's Tasks
-    <% end %>
-  </h2>
-  <% @tasks_by_category.each do |category, tasks| %>
-    <% tasks.each do |task| %>
-      <div class="today-task">
-        <div class="today-task-div">
-            <%= form_with model: [category, task], url: update_status_task_path(task), local: true, data: { remote: true } do |form| %>
-              <%= form.check_box :status_complete, checked: task.status_complete, onchange: "this.form.submit();" %>
-              <%= form.submit "Update Task Status", style: "display: none;" %>
-            <% end %>
+<div class="container-homepage">
+    <section class="section-today">
+      <h2 class="today-title">
+        <% if @tasks_by_category.empty? %>
+          Hooray, no task for today! <br>
+          <%= link_to 'Create Task Now', new_category_path, class: "category-add-button today-add-button" %>
+        <% else %>
+          Today's Tasks
+        <% end %>
+      </h2>
+      <% @tasks_by_category.each do |category, tasks| %>
+        <% tasks.each do |task| %>
+          <div class="today-task">
+            <div class="today-task-div">
+                <%= form_with model: [category, task], url: update_status_task_path(task), local: true, data: { remote: true } do |form| %>
+                  <%= form.check_box :status_complete, checked: task.status_complete, onchange: "this.form.submit();" %>
+                  <%= form.submit "Update Task Status", style: "display: none;" %>
+                <% end %>
 
-            <%= link_to task.name, edit_category_task_path(category, task), class: "task-name-today-label" %>
-            <span class="category-name-today">
-              |
-              <%= link_to category.title, category_path(category) %>
-              |
-            </span>
-            <%= button_to "Delete", category_task_path(category, task), method: :delete,
-                data: { confirm: "Are you sure you want to delete this task?" },
-                class: "today-task-delete-button" %>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-</section>
+                <%= link_to task.name, edit_category_task_path(category, task), class: "task-name-today-label" %>
+                <span class="category-name-today">
+                  |
+                  <%= link_to category.title, category_path(category) %>
+                  |
+                </span>
+                <%= button_to "Delete", category_task_path(category, task), method: :delete,
+                    data: { confirm: "Are you sure you want to delete this task?" },
+                    class: "today-task-delete-button" %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </section>
+</div>
