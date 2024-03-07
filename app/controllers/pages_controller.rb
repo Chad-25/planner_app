@@ -8,6 +8,6 @@ class PagesController < ApplicationController
 
     @start_date = Date.today.beginning_of_month
     @end_date = @start_date.end_of_month
-    @tasks = Task.where(due_date: @start_date..@end_date)
+    @tasks = current_user.tasks.where(due_date: @start_date..@end_date)
   end
 end

@@ -22,7 +22,8 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to category_path(@category), notice: "Task was successfully created."
     else
-      render :new
+      due_date_errors
+      redirect_to new_task_path
     end
   end
 
@@ -33,7 +34,8 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       redirect_to category_path(@category), notice: "Task status updated successfully."
     else
-      render :edit
+      due_date_errors
+      redirect_to edit_task_path
     end
   end
 
@@ -65,5 +67,12 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:name, :due_date, :status_complete)
+  end
+
+  def due_date_errors
+    error_messages = []
+    error_messages.concat(@task.errors[:name]) if @task.errors[:name].any?
+    error_messages.concat(@task.errors[:due_date]) if @task.errors[:due_date].any?
+    flash[:alert] = error_messages.join(", ")
   end
 end

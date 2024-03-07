@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  due_date: 2024-02-23
-  due_time: 2024-02-23 11:33:40
-  status_complete: false
-  category: one
+# one:
+#   name: MyString
+#   due_date: 2024-02-23
+#   due_time: 2024-02-23 11:33:40
+#   status_complete: false
+#   category: one
 
-two:
-  name: MyString
-  due_date: 2024-02-23
-  due_time: 2024-02-23 11:33:40
-  status_complete: false
-  category: two
+# two:
+#   name: MyString
+#   due_date: 2024-02-23
+#   due_time: 2024-02-23 11:33:40
+#   status_complete: false
+#   category: two
