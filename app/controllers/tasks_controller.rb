@@ -2,15 +2,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_category, except: [:update_status]
   before_action :set_task_update, only: [:update_status]
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @tasks = @category.tasks
-  end
-
-  def show
-    redirect_to category_path(@category), alert: "Task not found." if @task.nil?
-  end
+  before_action :set_task, only: [:edit, :update, :destroy]
 
   def new
     @task = Task.new
