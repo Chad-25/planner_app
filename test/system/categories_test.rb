@@ -21,14 +21,12 @@ class CategoriesTest < ApplicationSystemTestCase
     link.click
     assert_current_path new_category_path
 
-    category = Category.new(title: "Vacation", description: "Sample Description")
-    category.user = user
 
-    fill_in "category_title", with: category.title
-    fill_in "category_description", with: category.description
+    fill_in "Title", with: "Create a Journal App"
+    fill_in "Description", with: "List down all the tasks."
     click_button "Submit"
 
     assert_text "Category created successfully"
-    assert_text category.title.upcase
+    assert_text "Create a Journal App".upcase
   end
 end

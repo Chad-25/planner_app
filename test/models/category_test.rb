@@ -6,14 +6,11 @@ class CategoryTest < ActiveSupport::TestCase
     @user = users(:one)
     @user_new = users(:two)
 
-    @category = Category.new(title: "Vacation", description: "Sample Description")
-    @category.user = @user
+    @category = @user.categories.new(title: "Vacation", description: "Sample Description")
 
-    @category_new = Category.new(title: "Vacation", description: "Sample Description")
-    @category_new.user = @user_new
+    @category_new = @user_new.categories.new(title: "Vacation", description: "Sample Description")
 
-    @category_one = Category.new(title: "Vacation", description: "Sample Description")
-    @category_one.user = @user
+    @category_one = @user.categories.new(title: "Vacation", description: "Sample Description")
   end
 
   test "should be valid" do
